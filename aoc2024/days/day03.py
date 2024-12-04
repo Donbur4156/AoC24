@@ -21,6 +21,7 @@ def execute(data: List[str]):
             match y:
                 case "do()": enabled = True
                 case "don't()": enabled = False
-                case _: if enabled: r2 += calc_mul(y) 
+                case _: 
+                    if enabled: r2 += calc_mul(y)
 
     return r1, r2
