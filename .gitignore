@@ -3,3 +3,4 @@ __pycache__
 data/*.txt
 config.json
 .venv/*
+/.vscode
