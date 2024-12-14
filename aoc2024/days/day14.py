@@ -2,7 +2,6 @@ from typing import List
 from ..util import *
 import re
 import matplotlib.pyplot as plt
-import numpy as np
 
 
 test_data = ["p=0,4 v=3,-3",
@@ -36,16 +35,22 @@ def execute(data: List[str]):
     # data = test_data
 
     robots = [Robot(d) for d in data]
-    for robot in robots:
-        robot.move(field, 100)
+    [robot.move(field, 100) for robot in robots]
 
     q1 = len([robot for robot in robots if in_quadrant(robot, (0, field[0]//2), (0, field[1]//2))])
     q2 = len([robot for robot in robots if in_quadrant(robot, (field[0]//2+1, field[0]), (0, field[1]//2))])
     q3 = len([robot for robot in robots if in_quadrant(robot, (0, field[0]//2), (field[1]//2+1, field[1]))])
     q4 = len([robot for robot in robots if in_quadrant(robot, (field[0]//2+1, field[0]), (field[1]//2+1, field[1]))])
 
-    r1 = q1*q2*q3*q4
-    r2 = 2
+    for i in range(101, 10000):
+        [robot.move(field) for robot in robots]
+        x = [robot.p_x for robot in robots]
+        y = [robot.p_y for robot in robots]
+        plt.plot(x, y, 'o')
+        plt.savefig(f"aoc2024/days/day14_imgs/{i}.png")
+        plt.clf()
 
+    r1 = q1*q2*q3*q4
+    r2 = "take a look through the images"
 
     return r1, r2
