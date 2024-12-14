@@ -4,3 +4,4 @@ data/*.txt
 config.json
 .venv/*
 /.vscode
+*.png
