@@ -1,3 +1,5 @@
 requests
 humanize
 colorama
+matplotlib
+numpy
