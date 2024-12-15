@@ -24,12 +24,14 @@ def get_config() -> dict:
         return json.load(_f)
 
 
-def get_day_data(day: str) -> List[str]:
-    path = pathlib.Path(f'data/{day}.txt')
+def get_day_data(day: str, test: bool = False) -> List[str]:
+    path = pathlib.Path(f'data/{day}{"_test" if test else ""}.txt')
 
     if path.exists():
         with open(path.absolute()) as _f:
             return _f.read().splitlines()
+
+    if test: return None
 
     cfg = get_config()
 

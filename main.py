@@ -27,9 +27,10 @@ def generate_day(day: str = None):
 
 def run_day(target_day: str):
     day_data = get_day_data(target_day)
+    day_test_data = get_day_data(target_day, test=True)
     day_module = import_module(f'aoc2024.days.day{target_day}')
     start_time = perf_counter()
-    results = day_module.execute(day_data)
+    results = day_module.execute(day_data, day_test_data)
     end_time = perf_counter() - start_time
     print_result(*results)
     print(f'{Fore.LIGHTBLACK_EX}Perf: Took {end_time:.3f} seconds')
