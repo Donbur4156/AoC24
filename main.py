@@ -3,7 +3,7 @@ import datetime
 from importlib import import_module
 from pathlib import Path
 from time import perf_counter
-from aoc2024.util import get_day_data, print_result
+from aoc2024.util import get_day_data, print_result, get_config
 import shutil
 from colorama import init as colorama_init, Fore
 
@@ -36,7 +36,8 @@ def run_day(target_day: str):
     print(f'{Fore.LIGHTBLACK_EX}Perf: Took {end_time:.3f} seconds')
 
 if __name__ == "__main__":
-    target_day = get_target_day().zfill(2)
+    cfg = get_config()
+    target_day = cfg["day"] or get_target_day().zfill(2)
     if not Path(f'aoc2024/days/day{target_day}.py').exists():
         generate_day(target_day)
     run_day(target_day)
