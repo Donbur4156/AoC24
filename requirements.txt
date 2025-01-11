@@ -3,3 +3,4 @@ humanize
 colorama
 matplotlib
 numpy
+more-itertools
