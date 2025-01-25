@@ -4,3 +4,4 @@ colorama
 matplotlib
 numpy
 more-itertools
+pyhton_mermaid
